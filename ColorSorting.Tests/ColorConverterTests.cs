@@ -18,9 +18,9 @@ namespace ColorSorting.Tests
 
             for (int i = 0; i < colors.Length; i++)
             {
-                var color = colors[i];
-                var xyz1 = Mine.ColorConverter.RgbToXyz(color);
-                var xyz2 = Colorful.ColorConverter.RgbToXyz(color);
+                RGBColor color = colors[i];
+                XYZColor xyz1 = Mine.ColorConverter.RgbToXyz(color);
+                XYZColor xyz2 = Colorful.ColorConverter.RgbToXyz(color);
 
                 void UpdateDiff(double diff)
                 {
@@ -28,9 +28,9 @@ namespace ColorSorting.Tests
                         highestDifference = diff;
                 }
 
-                var xdiff = Math.Abs(xyz1.X - xyz2.X);
-                var ydiff = Math.Abs(xyz1.Y - xyz2.Y);
-                var zdiff = Math.Abs(xyz1.Z - xyz2.Z);
+                double xdiff = Math.Abs(xyz1.X - xyz2.X);
+                double ydiff = Math.Abs(xyz1.Y - xyz2.Y);
+                double zdiff = Math.Abs(xyz1.Z - xyz2.Z);
 
                 UpdateDiff(xdiff);
                 UpdateDiff(ydiff);
@@ -48,9 +48,9 @@ namespace ColorSorting.Tests
 
             for (int i = 0; i < colors.Length; i++)
             {
-                var color = colors[i];
-                var rgb1 = Mine.ColorConverter.XyzToRgb(color);
-                var rgb2 = Colorful.ColorConverter.XyzToRgb(color);
+                XYZColor color = colors[i];
+                RGBColor rgb1 = Mine.ColorConverter.XyzToRgb(color);
+                RGBColor rgb2 = Colorful.ColorConverter.XyzToRgb(color);
 
                 void UpdateDiff(double diff)
                 {
@@ -58,9 +58,9 @@ namespace ColorSorting.Tests
                         highestDifference = diff;
                 }
 
-                var rdiff = Math.Abs(rgb1.R - rgb2.R);
-                var gdiff = Math.Abs(rgb1.G - rgb2.G);
-                var bdiff = Math.Abs(rgb1.B - rgb2.B);
+                double rdiff = Math.Abs(rgb1.R - rgb2.R);
+                double gdiff = Math.Abs(rgb1.G - rgb2.G);
+                double bdiff = Math.Abs(rgb1.B - rgb2.B);
 
                 UpdateDiff(rdiff);
                 UpdateDiff(gdiff);
@@ -78,9 +78,9 @@ namespace ColorSorting.Tests
 
             for (int i = 0; i < colors.Length; i++)
             {
-                var color = colors[i];
-                var lab1 = Mine.ColorConverter.XyzToLab(color);
-                var lab2 = Colorful.ColorConverter.XyzToLab(color);
+                XYZColor color = colors[i];
+                LabColor lab1 = Mine.ColorConverter.XyzToLab(color);
+                LabColor lab2 = Colorful.ColorConverter.XyzToLab(color);
 
                 void UpdateDiff(double diff)
                 {
@@ -88,9 +88,9 @@ namespace ColorSorting.Tests
                         highestDifference = diff;
                 }
 
-                var rdiff = Math.Abs(lab1.L - lab2.L);
-                var gdiff = Math.Abs(lab1.a - lab2.a);
-                var bdiff = Math.Abs(lab1.b - lab2.b);
+                double rdiff = Math.Abs(lab1.L - lab2.L);
+                double gdiff = Math.Abs(lab1.a - lab2.a);
+                double bdiff = Math.Abs(lab1.b - lab2.b);
 
                 UpdateDiff(rdiff);
                 UpdateDiff(gdiff);
@@ -108,9 +108,9 @@ namespace ColorSorting.Tests
 
             for (int i = 0; i < colors.Length; i++)
             {
-                var color = colors[i];
-                var lab1 = Mine.ColorConverter.LabToXyz(color);
-                var lab2 = Colorful.ColorConverter.LabToXyz(color);
+                LabColor color = colors[i];
+                XYZColor lab1 = Mine.ColorConverter.LabToXyz(color);
+                XYZColor lab2 = Colorful.ColorConverter.LabToXyz(color);
                 
                 void UpdateDiff(double diff)
                 {
@@ -118,9 +118,9 @@ namespace ColorSorting.Tests
                         highestDifference = diff;
                 }
 
-                var rdiff = Math.Abs(lab1.X - lab2.X);
-                var gdiff = Math.Abs(lab1.Y - lab2.Y);
-                var bdiff = Math.Abs(lab1.Z - lab2.Z);
+                double rdiff = Math.Abs(lab1.X - lab2.X);
+                double gdiff = Math.Abs(lab1.Y - lab2.Y);
+                double bdiff = Math.Abs(lab1.Z - lab2.Z);
 
                 UpdateDiff(rdiff);
                 UpdateDiff(gdiff);

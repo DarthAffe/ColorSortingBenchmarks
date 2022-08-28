@@ -50,17 +50,23 @@ public class ColorSpaceConversionBenchmarks
     //    return Colorful.ColorConverter.XyzToRgb(xyzColor);
     //}
 
-    [BenchmarkCategory("XyzToLab"), Benchmark]
-    public LabColor XyzToLabMine()
-    {
-        return Mine.ColorConverter.XyzToLab(xyzColor);
-    }
+    //[BenchmarkCategory("XyzToLab"), Benchmark]
+    //public LabColor XyzToLabMine()
+    //{
+    //    return Mine.ColorConverter.XyzToLab(xyzColor);
+    //}
 
-    [BenchmarkCategory("XyzToLab"), Benchmark(Baseline = true)]
-    public LabColor XyzToLabLib()
-    {
-        return Colorful.ColorConverter.XyzToLab(xyzColor);
-    }
+    //[BenchmarkCategory("XyzToLab"), Benchmark(Baseline = true)]
+    //public LabColor XyzToLabLib()
+    //{
+    //    return Colorful.ColorConverter.XyzToLab(xyzColor);
+    //}
+
+    //[BenchmarkCategory("XyzToLab"), Benchmark]
+    //public LabColor XyzToLabLibOptimized()
+    //{
+    //    return Optimized.ColorConverter2.XyzToLab(xyzColor);
+    //}
 
     //[BenchmarkCategory("LabToXyz"), Benchmark]
     //public XYZColor LabToXyzMine()

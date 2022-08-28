@@ -1,12 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using ColorSorting.Utils;
-using Colourful;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ColorSorting.Optimized;
+using SkiaSharp;
 
 namespace ColorSorting.Benchmarks;
 
@@ -17,14 +12,66 @@ public class ColorSortingBenchmarks
     //private static readonly IColorConverter<RGBColor, LabColor> _rgbToLab = new ConverterBuilder().FromRGB().ToLab().Build();
     //private static readonly IColorConverter<LabColor, RGBColor> _labToRgb = new ConverterBuilder().FromLab().ToRGB().Build();
     //private static readonly CIEDE2000ColorDifference _difference = new ();
-    //private static readonly RGBColor[] span = RandomColorGenerator.GetRandomRgbColors(1000);
+    private SKColor[] _data = Array.Empty<SKColor>();
+
+    [Params(/*4, 6, 8, 16, 32, 64,*/ 128/*, 256, 512, 1024, 2048 */)]
+    public int Count { get; set; }
+
+    [GlobalSetup]
+    public void Setup()
+    {
+        _data = RandomColorGenerator.GetRandomSKColors(Count);
+    }
+
+    [Benchmark]
+    public void CIEDE2000()
+    {
+        ColorSorterCIEDE2000.Sort(_data);
+    }
+
+    [Benchmark]
+    public void CIE94()
+    {
+        ColorSorterCIE94.Sort(_data);
+    }
+
+    [Benchmark]
+    public void CIE76()
+    {
+        ColorSorterCIE76.Sort(_data);
+    }
+
+    //private static readonly CIEDE2000ColorDifference _diff = new();
 
     //[Benchmark]
-    //public void BenchNew()
+    //public void DiffColorful()
     //{
-    //    Span<RGBColor> sorted = stackalloc RGBColor[1000];
-    //    ColorSorter.Sort(span, sorted);
+    //    _diff.ComputeDifference(new LabColor(1, 0.5, 0.5), new LabColor(1, 1, 1));
+    //}
 
+    //[Benchmark]
+    //public void Reference()
+    //{
+    //    CIEDE2000_Reference.ComputeDifference(new LabColor(1, 0.5, 0.5), new LabColor(1, 1, 1));
+    //}
+
+    //[Benchmark]
+    //public void Optimized()
+    //{
+    //    CIEDE2000_2.ComputeDifference(new LabColor(1, 0.5, 0.5), new LabColor(1, 1, 1));
+    //}
+
+
+    //[Benchmark]
+    //public void DiffMine()
+    //{
+    //    ColorSorting.Mine.CIEDE2000.ComputeDifference(new LabColor(1, 0.5, 0.5), new LabColor(1, 1, 1));
+    //}
+
+    //[Benchmark]
+    //public void DiffMine2()
+    //{
+    //    CIEDE2000_2.ComputeDifference(new LabColor(1, 0.5, 0.5), new LabColor(1, 1, 1));
     //}
 
     //public void SortNew(in Span<LabColor> result, in Span<LabColor> input)

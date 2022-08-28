@@ -14,5 +14,11 @@
   <ItemGroup>
     <ProjectReference Include="..\ColorSorting\ColorSorting.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="RGB.NET.Core">
+      <HintPath>..\..\RGB.NET\bin\net6.0\RGB.NET.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>

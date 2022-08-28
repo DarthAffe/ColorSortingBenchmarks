@@ -8,5 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="Colourful" Version="3.1.0" />
+    <PackageReference Include="RGB.NET.Core" Version="1.0.0-prerelease.46" />
+    <PackageReference Include="SkiaSharp" Version="2.88.1-preview.108" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RGB.NET.Core">
+      <HintPath>..\..\RGB.NET\bin\net6.0\RGB.NET.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
